@@ -32,11 +32,20 @@ const UserProfileCard = () => {
   // Handle input changes and validate it 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "phone" && /\D/.test(value)) return;
+  
+    if (name === "phone") {
+      // Prevents non-digit characters and limits input to 10 digits
+      const numericValue = value.replace(/\D/g, "").slice(0, 10);
+      setFormData({ ...formData, [name]: numericValue });
+      setErrors({ ...errors, [name]: validateInput(name, numericValue) });
+      return;
+    }
+  
     const updatedValue = name === "name" ? value.trimStart() : value;
     setFormData({ ...formData, [name]: updatedValue });
     setErrors({ ...errors, [name]: validateInput(name, updatedValue) });
   };
+  
 
   // Handle profile picture upload and display it
   const handleProfilePictureChange = (e) => {
