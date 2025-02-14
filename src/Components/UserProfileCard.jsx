@@ -7,7 +7,7 @@ const UserProfileCard = () => {
     name: "Kunal Sabale",
     email: "kunalsabale85@gmail.com",
     phone: "9762016975",
-    profilePicture: "src/assets/user.png",
+    profilePicture: "/user.png",
   });
 
   //here i manage the  State for edit mode and form data
