@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const UserProfileCard = () => {
-  // State for user data
+  // i write the State for user data
   const [user, setUser] = useState({
     name: "Kunal Sabale",
     email: "kunalsabale85@gmail.com",
@@ -10,12 +10,12 @@ const UserProfileCard = () => {
     profilePicture: "src/assets/user.png",
   });
 
-  // State for edit mode and form data
+  //here i manage the  State for edit mode and form data
   const [isEditMode, setIsEditMode] = useState(false);
   const [formData, setFormData] = useState({ ...user });
   const [errors, setErrors] = useState({});
 
-  // Function to validate input fields
+  // Function to validate input fields based on name and value
   const validateInput = (name, value) => {
     if (!value.trim()) return `${name} is required.`;
     if (name === "name") {
@@ -29,7 +29,7 @@ const UserProfileCard = () => {
     return "";
   };
 
-  // Handle input changes
+  // Handle input changes and validate it 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "phone" && /\D/.test(value)) return;
@@ -38,7 +38,7 @@ const UserProfileCard = () => {
     setErrors({ ...errors, [name]: validateInput(name, updatedValue) });
   };
 
-  // Handle profile picture upload
+  // Handle profile picture upload and display it
   const handleProfilePictureChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -64,7 +64,7 @@ const UserProfileCard = () => {
     }
     setUser({ ...formData });
     setIsEditMode(false);
-    console.log(formData); // Logs updated user data to console
+    console.log(formData); 
     toast.success("Profile updated successfully!", { style: { background: "#4CAF50", color: "white" } });
   };
 
